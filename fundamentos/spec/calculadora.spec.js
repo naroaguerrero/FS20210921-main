@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
-xdescribe('Calculadora',()=> {     
+describe('Calculadora',()=> {     
 
-    // Generate a random number each time that the tests are executed
     var number1 = Math.floor(Math.random() * 10);
     var number2 = Math.floor(Math.random() * 10);
 
