@@ -1,17 +1,19 @@
 /* eslint-disable no-unused-vars */
-
-   function suma(num1, num2) {
-        return num1 + num2;
-    }
-
-   function resta(num1, num2) {
-        return num1 - num2;
-    }
-
-    function multilicacion(num1, num2) {
-        return num1 * num2;
-    }
-
-     function division(num1, num2) {
-        return num2 && num1/num2;
-    }
+function setResult(value) {
+    document.getElementById('result').innerHTML = value;
+}
+function getResult() {
+    return(document.getElementById('result').innerHTML);
+}
+function add(key) { 
+    var result = getResult();
+    if (result!='0' || isNaN(key)) setResult(result + key);
+    else setResult(key);
+}
+function calc() {
+    var result = eval(getResult()); 
+    setResult(result);
+}
+function del() { 
+    setResult(0);
+}
