@@ -1,0 +1,37 @@
+<h1>Hola{{ Nombre }}</h1>
+
+<p>
+  <input type="text" [(ngModel)]="Nombre" />
+  <input type="button" value="" (click)="saluda()" />
+  <input type="button" value="" (click)="despide()" />
+  <input type="button" value="" (click)="di('algo')" />
+  <input type="button" value="" (click)="cambia()" />
+</p>
+
+<p [textContent]="resultado">Esto se pierde</p>
+<p [innerHTML]="resultado">Esto se pierde</p>
+
+<p [hidden]="!visible">Ahora me ves</p>
+<p *ngIf="!visible">Ahora existo</p>
+
+<p [ngClass]="estetica">Lorem10</p>
+<p [class.casioculto]="!visible">Ahora me ves</p>
+
+<p>Calcula 2 + 2 = {{ 2 + 2 }} = {{ calcula }}</p>
+
+<ul>
+  <li
+    *ngFor="let item of listado; let indice = index; let fondo = odd"
+    [style.background-color]="fondo ? 'LightBlue' : 'Lavender'"
+  >
+    {{ item.nombre }} ({{ item.id }}) [Elemento {{ indice + 1 }} de
+    {{ listado.length }}]
+  </li>
+</ul>
+
+<p>
+  <select [(ngModel)]="idProvincia">
+    <option value="">--Elige opción--</option>
+    <option *ngFor="let p of listado" [value]="p.id">{{ p.nombre }}</option>
+  </select>
+</p>
