@@ -22,7 +22,7 @@ export class DemosComponent implements OnInit {
 
   constructor() { }
 
-  public get Nombre(): string { return this.Nombre;}
+  public get Nombre(): string { return this.nombre;}
   public set Nombre (value: string){
   if(this.nombre === value) return
   this.nombre = value;
