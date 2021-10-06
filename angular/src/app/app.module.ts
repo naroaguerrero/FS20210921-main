@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 
 import { DemosComponent } from './demos/demos.component';
 import { FormsModule } from '@angular/forms';
-
+import { ERROR_LEVEL, LoggerService } from 'src/lib/my-core/services/logger.service';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { MyCoreModule } from 'src/lib/my-core/services';
 import { MainModule } from './main';
 import { CommonModule } from '@angular/common';
 import { SecurityModule } from './security/security.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,11 @@ import { SecurityModule } from './security/security.module';
     AppRoutingModule, MyCoreModule,
     MainModule, CommonModule, SecurityModule,
   ],
-  providers: [],
+  providers: [
+    LoggerService,
+    {provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL},
+    {provide: LOCALE_ID, useValue: 'es-ES'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

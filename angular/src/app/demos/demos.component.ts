@@ -1,9 +1,15 @@
+import { ERROR_COMPONENT_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import {
+  ERROR_LEVEL,
+  LoggerService,
+} from 'src/lib/my-core/services/logger.service';
 
 @Component({
   selector: 'app-demos',
   templateUrl: './demos.component.html',
-  styleUrls: ['./demos.component.scss']
+  styleUrls: ['./demos.component.scss'],
+  providers: [LoggerService, { provide: ERROR_LEVEL, useValue: 1 }],
 })
 export class DemosComponent implements OnInit {
   private nombre: string = 'mundo';
@@ -12,7 +18,7 @@ export class DemosComponent implements OnInit {
     { id: 2, nombre: 'malaga' },
     { id: 3, nombre: 'SEVILLA' },
     { id: 4, nombre: 'ciudad real' },
-  ]
+  ];
   idProvincia: number = 2;
 
   resultado: string | null = null;
@@ -20,9 +26,16 @@ export class DemosComponent implements OnInit {
   estetica = { importante: true, error: false, urgente: true };
   fontSize = 18;
 
-  constructor() { }
+  constructor(private log: LoggerService) {
+    log.error('Es un error');
+    log.warn('Es un warn');
+    log.info('Es un info');
+    log.log('Es un log');
+  }
 
-  public get Nombre(): string { return this.nombre; }
+  public get Nombre(): string {
+    return this.nombre;
+  }
   public set Nombre(value: string) {
     if (this.nombre === value) return;
     this.nombre = value;
@@ -46,16 +59,18 @@ export class DemosComponent implements OnInit {
     this.estetica.error = !this.estetica.error;
   }
 
-  calcula(a: number, b: number): number { return a + b; }
+  calcula(a: number, b: number): number {
+    return a + b;
+  }
 
   add(provincia: string): void {
-    const id = this.listado.length === 0 ? 1 : (this.listado[this.listado.length - 1].id + 1);
+    const id =
+      this.listado.length === 0
+        ? 1
+        : this.listado[this.listado.length - 1].id + 1;
     this.listado.push({ id, nombre: provincia });
     this.idProvincia = id;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
-
