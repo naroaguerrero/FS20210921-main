@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ElipsisPipe } from './compartidos/cadenas.pipe';
 import { SizerComponent } from './compartidos/sizer.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
+import { CalculadoraComponent } from './calculadora/calculadora.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
     DemosComponent,
     ElipsisPipe,
     SizerComponent,
-    DinamicoComponent
+    DinamicoComponent,
+    CalculadoraComponent
   ],
   imports: [
     BrowserModule, FormsModule,

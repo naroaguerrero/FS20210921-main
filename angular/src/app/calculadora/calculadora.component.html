@@ -1,0 +1,30 @@
+<tr>
+  <td colspan="4">{{result}}</td>
+</tr>
+<tr>
+  <td><button (click)="add('1')">1</button></td>
+  <td><button (click)="add('2')">2</button></td>
+  <td><button (click)="add('3')">3</button></td>
+  <td><button (click)="add('+')">+</button></td>
+</tr>
+<tr>
+  <td><button (click)="add('4')">4</button></td>
+  <td><button (click)="add('5')">5</button></td>
+  <td><button (click)="add('6')">6</button></td>
+  <td><button (click)="add('-')">-</button></td>
+</tr>
+<tr>
+  <td><button (click)="add('7')">7</button></td>
+  <td><button (click)="add('8')">8</button></td>
+  <td><button (click)="add('9')">9</button></td>
+  <td><button (click)="add('*')">*</button></td>
+</tr>
+<tr>
+  <td colspan="3"><button (click)="add('0')">0</button></td>
+  <td colspan="3"><button (click)="add('/')">/</button></td>
+</tr>
+<tr>
+  <td colspan="2"><button (click)="del()" class="ac">AC</button></td>
+  <td><button (click)="add('.')">.</button></td>
+  <td><button (click)="calc()">=</button></td>
+</tr>
