@@ -4,6 +4,7 @@ import {
   ERROR_LEVEL,
   LoggerService,
 } from 'src/lib/my-core/services/logger.service';
+import { NotificationService } from '../common-services';
 
 @Component({
   selector: 'app-demos',
@@ -26,11 +27,11 @@ export class DemosComponent implements OnInit {
   estetica = { importante: true, error: false, urgente: true };
   fontSize = 18;
 
-  constructor(private log: LoggerService) {
-    log.error('Es un error');
+  constructor(private log: LoggerService, public vm:NotificationService) {
+   /*  log.error('Es un error');
     log.warn('Es un warn');
     log.info('Es un info');
-    log.log('Es un log');
+    log.log('Es un log'); */
   }
 
   public get Nombre(): string {
@@ -72,5 +73,9 @@ export class DemosComponent implements OnInit {
     this.idProvincia = id;
   }
 
+
+
   ngOnInit(): void {}
 }
+
+

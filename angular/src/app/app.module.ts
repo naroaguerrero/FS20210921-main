@@ -1,21 +1,24 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import localeEsExtra from '@angular/common/locales/extra/es';
+registerLocaleData(localeEs, 'es', localeEsExtra);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { DemosComponent } from './demos/demos.component';
 import { FormsModule } from '@angular/forms';
-import { ERROR_LEVEL, LoggerService } from 'src/lib/my-core/services/logger.service';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
-import { MyCoreModule } from 'src/lib/my-core/services';
+import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
 import { MainModule } from './main';
-import { CommonModule } from '@angular/common';
-import { SecurityModule } from './security/security.module';
+import { CommonServicesModule } from './common-services';
+import { SecurityModule } from './security';
 import { environment } from 'src/environments/environment';
-import { CommonServicesModule } from './common-services/common-services.module';
-import { FormularioComponent } from './formulario/formulario.component'
+import { FormularioComponent } from './formulario/formulario.component';
+import { CommonComponentModule } from './common-component';
+import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
 
 @NgModule({
   declarations: [
@@ -24,18 +27,24 @@ import { FormularioComponent } from './formulario/formulario.component'
     DinamicoComponent,
     CalculadoraComponent,
     FormularioComponent,
+    ClienteFormularioComponent,
   ],
   imports: [
-    BrowserModule, FormsModule,
-    AppRoutingModule, MyCoreModule,
-    MainModule, CommonModule, SecurityModule,
-    CommonServicesModule, MainModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    MyCoreModule,
+    MainModule,
+    CommonServicesModule,
+    SecurityModule,
+    CommonComponentModule,
   ],
   providers: [
     LoggerService,
-    {provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL},
-    {provide: LOCALE_ID, useValue: 'es-ES'}
+    // { provide: LoggerService, useClass: LoggerHTTPService },
+    { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
+    { provide: LOCALE_ID, useValue: 'es-ES' },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
