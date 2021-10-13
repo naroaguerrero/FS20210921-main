@@ -1,3 +1,1 @@
 # Ejemplos y ejercicios de HTML, CSS, ...
-
-# Hola
