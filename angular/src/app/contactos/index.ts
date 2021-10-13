@@ -1,1 +1,1 @@
-export * from './contactos.module'
+export * from './modulo.module';

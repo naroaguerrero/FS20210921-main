@@ -15,4 +15,4 @@ import { MyCoreModule } from 'src/lib/my-core';
     CommonServicesModule,
   ],
 })
-export class ModuloModule {}
+export class ContactoModule {}
