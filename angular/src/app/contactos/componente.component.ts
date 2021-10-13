@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ContactosViewModelService } from './ContactosViewModelService';
+import { ContactosViewModelService } from './servicios.service';
 
 @Component({
   selector: 'app-contactos',
