@@ -20,7 +20,8 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { CommonComponentModule } from './common-component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
 import { HttpClientModule } from '@angular/common/http'
-import {ContactosModule } from './contactos'
+
+
 
 
 
@@ -36,7 +37,7 @@ import {ContactosModule } from './contactos'
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, CommonComponentModule,
-    SecurityModule, ContactosModule,
+    SecurityModule,
   ],
   providers: [
     LoggerService,
