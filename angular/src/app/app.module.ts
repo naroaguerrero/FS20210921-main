@@ -19,7 +19,10 @@ import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
 import { CommonComponentModule } from './common-component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'
+import {ContactosModule } from './contactos'
+
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, CommonComponentModule,
-    SecurityModule,
+    SecurityModule, ContactosModule,
   ],
   providers: [
     LoggerService,
