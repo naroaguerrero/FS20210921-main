@@ -1,12 +1,3 @@
-<!-- <p>
-  <button *ngFor="let item of menu; let indice=index;" (click)="seleccionar(indice)">{{item.texto}}</button>
-</p>
-<app-notification></app-notification>
-<div class="container-fluid">
-  <ng-container *ngComponentOutlet="actual"></ng-container>
-</div> -->
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="assets/logo.png" width="120" alt="Logotipo"></a>
@@ -20,10 +11,12 @@
             type="button" (click)="seleccionar(indice)" ><i [class]="item.icono"></i> {{item.texto}}</button>
         </li>
       </ul>
+      <app-login></app-login>
     </div>
   </div>
 </nav>
-<!-- <app-notification-modal></app-notification-modal> -->
+<app-notification-modal></app-notification-modal>
+<app-ajax-wait></app-ajax-wait>
 <main class="container-fluid">
   <ng-container *ngComponentOutlet="actual"></ng-container>
 </main>

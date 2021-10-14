@@ -5,8 +5,10 @@
 export const environment = {
   production: false,
   ERROR_LEVEL: 99,
-  apiURL: 'http://localhost:4321/api/',
-}
+  securityApiURL: 'http://localhost:4321/',
+  apiURL: '/api/',
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
