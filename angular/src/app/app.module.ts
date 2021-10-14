@@ -21,6 +21,8 @@ import { CommonComponentModule } from './common-component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
 import { HttpClientModule } from '@angular/common/http'
 import { ContactoModule } from './contactos/contactos.module';
+import { PageNotFoundComponent } from './mail/page-not-found/page-not-found.component';
+import { HeaderComponent } from './main/header/header.component';
 
 
 
@@ -34,6 +36,8 @@ import { ContactoModule } from './contactos/contactos.module';
     CalculadoraComponent,
     FormularioComponent,
     ClienteFormularioComponent,
+    PageNotFoundComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
