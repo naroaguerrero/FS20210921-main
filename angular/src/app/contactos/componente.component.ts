@@ -69,18 +69,17 @@ export class BotonesComponent implements OnInit, OnDestroy {
 
 @Component({
   selector: 'app-contactos-list',
-  templateUrl: './tmpl-list.sin-rutas.component.html',
+  templateUrl: './tmpl-list.component.html',
   styleUrls: ['./componente.component.scss'],
 })
-export class ContactosListComponent implements OnInit, OnDestroy {
+export class ContactosListComponent implements OnInit {
   constructor(protected vm: ContactosViewModelService) {}
   public get VM(): ContactosViewModelService {
     return this.vm;
   }
   ngOnInit(): void {
-    this.vm.load();
+    this.vm.list();
   }
-  ngOnDestroy(): void {}
 }
 
 @Component({
@@ -93,7 +92,9 @@ export class ContactosAddComponent implements OnInit {
   public get VM(): ContactosViewModelService {
     return this.vm;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.vm.add();
+  }
 }
 
 @Component({
@@ -102,12 +103,28 @@ export class ContactosAddComponent implements OnInit {
   styleUrls: ['./componente.component.scss'],
 })
 export class ContactosEditComponent implements OnInit, OnDestroy {
-  constructor(protected vm: ContactosViewModelService) {}
+  private obs$: any;
+  constructor(
+    protected vm: ContactosViewModelService,
+    protected route: ActivatedRoute,
+    protected router: Router
+  ) {}
   public get VM(): ContactosViewModelService {
     return this.vm;
   }
-  ngOnInit(): void {}
-  ngOnDestroy(): void {}
+  ngOnInit(): void {
+    this.obs$ = this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = parseInt(params?.get('id') ?? '');
+      if (id) {
+        this.vm.edit(id);
+      } else {
+        this.router.navigate(['/404.html']);
+      }
+    });
+  }
+  ngOnDestroy(): void {
+    this.obs$.unsubscribe();
+  }
 }
 
 @Component({
@@ -116,12 +133,28 @@ export class ContactosEditComponent implements OnInit, OnDestroy {
   styleUrls: ['./componente.component.scss'],
 })
 export class ContactosViewComponent implements OnInit, OnDestroy {
-  constructor(protected vm: ContactosViewModelService) {}
+  private obs$: any;
+  constructor(
+    protected vm: ContactosViewModelService,
+    protected route: ActivatedRoute,
+    protected router: Router
+  ) {}
   public get VM(): ContactosViewModelService {
     return this.vm;
   }
-  ngOnInit(): void {}
-  ngOnDestroy(): void {}
+  ngOnInit(): void {
+    this.obs$ = this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = parseInt(params?.get('id') ?? '');
+      if (id) {
+        this.vm.view(id);
+      } else {
+        this.router.navigate(['/404.html']);
+      }
+    });
+  }
+  ngOnDestroy(): void {
+    this.obs$.unsubscribe();
+  }
 }
 /*
 @Component({
