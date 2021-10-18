@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterUserComponent } from './register-user.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -10,7 +10,7 @@ describe('RegisterUserComponent', () => {
   let component: RegisterUserComponent;
   let fixture: ComponentFixture<RegisterUserComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
     TestBed.configureTestingModule({
       declarations: [ RegisterUserComponent ],
@@ -20,7 +20,7 @@ describe('RegisterUserComponent', () => {
       imports: [ HttpClientTestingModule, ],
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterUserComponent);

@@ -8,25 +8,12 @@ import { ModoCRUD } from '../base-code/tipos';
 import { NavigationService, NotificationService } from '../common-services';
 import { AuthService, AUTH_REQUIRED } from '../security';
 
-export class Contactos {
-  id: number = 0;
-  tratamiento: string | null = null;
-  nombre: string | null = null;
-  apellidos: string | null = null;
-  telefono: string | null = null;
-  email: string | null = null;
-  sexo: string | null = null;
-  nacimiento: string | null = null;
-  avatar: string | null = null;
-  conflictivo: boolean = false;
-}
-
 @Injectable({
   providedIn: 'root'
 })
-export class ContactosDAOService extends RESTDAOService<any, any> {
+export class BlogDAOService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
-    super(http, 'contactos', { withCredentials: true, context: new HttpContext().set(AUTH_REQUIRED, true) });
+    super(http, 'blog', { withCredentials: true, context: new HttpContext().set(AUTH_REQUIRED, true) });
   }
   page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
@@ -49,16 +36,14 @@ export class ContactosDAOService extends RESTDAOService<any, any> {
 @Injectable({
   providedIn: 'root'
 })
-export class ContactosViewModelService {
+export class BlogViewModelService {
   protected modo: ModoCRUD = 'list';
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
-  protected listURL = '/contactos';
 
   constructor(protected notify: NotificationService, public auth: AuthService,
-    protected out: LoggerService, private navigation: NavigationService,
-    protected dao: ContactosDAOService, protected router: Router) { }
+    private navigation: NavigationService, protected dao: BlogDAOService) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
@@ -98,8 +83,6 @@ export class ContactosViewModelService {
     );
   }
   public delete(key: any): void {
-    if (!window.confirm('¿Seguro?')) { return; }
-
     this.dao.remove(key).subscribe(
       data => this.list(),
       err => this.notify.add(err.message)
@@ -109,9 +92,6 @@ export class ContactosViewModelService {
   public cancel(): void {
     this.elemento = {};
     this.idOriginal = null;
-    // this.list();
-    // this.router.navigateByUrl(this.listURL);
-    // this.load(this.page)
     this.navigation.back()
   }
 
