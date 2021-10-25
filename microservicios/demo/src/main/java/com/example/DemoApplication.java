@@ -1,5 +1,7 @@
 package com.example;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
@@ -40,9 +42,9 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	ActorService srv;
 	
-	//@Override
+	@Override
 	@Transactional
-	public void run2(String... args) throws Exception {
+	public void run(String... args) throws Exception {
 //		Optional<Actor> a = dao.findById(201);
 //		if(a.isPresent())
 //			System.out.println(a.get());
@@ -67,7 +69,6 @@ public class DemoApplication implements CommandLineRunner {
 //			System.out.println("No encontrado");
 //		}
 		//dao.findByFirstNameStartingWithOrderByLastNameDesc("P").forEach(System.out::println);
-//		dao.laMia(new Date(Date.parse(LocalDate.now().toString()))).forEach(System.out::println);
 //		dao.findByLastUpdateGreaterThan(LocalDate.now()).forEach(System.out::println);
 
 //		srv.getAll().forEach(System.out::println);
@@ -77,7 +78,7 @@ public class DemoApplication implements CommandLineRunner {
 		
 //		dao.findByActorIdNotNull(ActorShort.class)
 //			.forEach(item-> System.out.println(item.getNombreCompleto()));
-//		dao.findByActorIdNotNull(ActorDTO.class)
+//		dao.findByActorIdIsNotNull(ActorDTO.class)
 //		.forEach(item-> System.out.println(item));
 //		dao.findByActorIdNotNull(Actor.class)
 //		.forEach(item-> System.out.println(item));
@@ -94,15 +95,7 @@ public class DemoApplication implements CommandLineRunner {
 //		}
 //		// dao.save(actor);
 //		srv.add(actor);
-		System.out.println("Hola Mundo");
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("Hola Mundo");
-		throw new Exception("Runner");
-		
+		dao.laMia(DateFormat.getDateInstance().parse(DateFormat.getDateInstance().format(new Date()))).forEach(System.out::println);
 	}
 
 }
